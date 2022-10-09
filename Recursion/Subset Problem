@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+//By Abhimanyu 
+void result(int i , int arr[],int sum,int target ,vector<int>v,int n)
+{
+   if(i>=n) 
+   {
+       if(sum==target)
+       {
+           for(auto it : v) 
+           {
+               cout<<it<<" ";
+              
+           }
+            cout<<endl;
+         
+       }
+         return;
+   }
+   v.push_back(arr[i]);
+   sum+=arr[i];
+   solve(i+1,arr,sum,target ,v,n);
+   sum-=arr[i];
+   v.pop_back();
+   
+   solve(i+1,arr,sum,target ,v,n);
+}
+
+
+
+int main() {
+
+int arr[]={1,2,1};
+int n =3;
+int target=2;
+vector<int>v;
+
+result(0,arr,0,target ,v,n);
+}
