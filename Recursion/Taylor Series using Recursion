@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+double p=1,f=1;
+double taylor(int x,int n)
+{
+    double r=0;
+    if(n==0)
+    return 1.0;
+    else
+    {
+        r=taylor(x,n-1);
+        p=p*x;
+        f=f*n;
+        //cout<<n<<" "<<p<<" "<<f<<endl;
+        return (r+(p/f));
+    }
+}
+int main()
+{
+    printf("Enter the value of x and number and number of terms n.\n");
+    double x,n;
+    cin>>x>>n;
+    double r;
+    r=taylor(x,n-1);
+    printf("%f\n",r);
+    return 0;
+}
