@@ -1,7 +1,4 @@
-// TIME COMPLEXITY --> O(V+E)
-// SPACE COMPLEXITY --> O(V)
 
-// TOPO SORT USING bfs
 
 #include<iostream>
 #include<queue>
