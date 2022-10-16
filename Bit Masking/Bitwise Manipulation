@@ -1,0 +1,38 @@
+  #include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int dec=500;
+    int remainder, octal=0, i=1, hex=0, bin=0;
+    //Octal
+     while(dec != 0) {
+        remainder = dec%8;
+        dec = dec/8;
+        octal = octal + (remainder*i);
+        i = i*10;
+    }
+    cout<<octal<<endl;
+
+    //Hexadecimal
+    i=1;
+    dec=500;
+     while(dec != 0) {
+        remainder = dec%16;
+        dec = dec/16;
+        hex = hex + (remainder*i);
+        i = i*10;
+    }
+    cout<<hex<<endl;
+
+    //Binary
+    i=1;
+    dec=500;
+     while(dec != 0) {
+        remainder = dec%2;
+        dec = dec/2;
+        bin = bin + (remainder*i);
+        i = i*10;
+    }
+    cout<<bin<<endl;
+   return 0;
+   }
