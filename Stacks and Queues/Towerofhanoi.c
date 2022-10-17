@@ -1,8 +1,9 @@
 #include <stdio.h>
 void toh(int n, char src, char dest, char help)
 {
-    if (n == 0)
+    if (n == 1)
     {
+        printf("\n Move disk 1 from %c to %c", src, dest);
         return;
     }
     toh(n - 1, src, help, dest);
