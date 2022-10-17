@@ -15,7 +15,8 @@ int main()
           break;  
       }  
   }  
-  if (flag==0)  
+  if (flag==0){
       cout << "Number is Prime."<<endl;  
+  }
   return 0;  
 }  
