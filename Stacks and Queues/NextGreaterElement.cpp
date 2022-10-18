@@ -1,31 +1,20 @@
-#include<bits/stdc++.h>
-
-using namespace std;
 class Solution {
-  public:
-    vector < int > nextGreaterElements(vector < int > & nums) {
-      int n = nums.size();
-      vector < int > nge(n, -1);
-      stack < int > st;
-      for (int i = 2 * n - 1; i >= 0; i--) {
-        while (!st.empty() && st.top() <= nums[i % n]) {
-          st.pop();
+public:
+    vector<int> nextGreaterElement(vector<int>& n1, vector<int>& n2) {
+        unordered_map<int, int> m;
+        stack<int>st;
+        st.push(-1);
+        
+        for (int i = n2.size()-1; i >= 0; i--)
+        {
+            while (st.top() != -1 && n2[i] > st.top())  
+                st.pop();
+            m[n2[i]] = st.top();
+            st.push(n2[i]);
         }
-
-        if (i < n) {
-          if (!st.empty()) nge[i] = st.top();
-        }
-        st.push(nums[i % n]);
-      }
-      return nge;
+        for (int i = 0; i < n1.size(); i++)
+            n1[i] = m[n1[i]];
+        
+        return n1;
     }
 };
-int main() {
-  Solution obj;
-  vector < int > v {5,7,1,2,6,0};
-  vector < int > res = obj.nextGreaterElements(v);
-  cout << "The next greater elements are" << endl;
-  for (int i = 0; i < res.size(); i++) {
-    cout << res[i] << " ";
-  }
-}
