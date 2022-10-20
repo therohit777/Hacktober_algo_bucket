@@ -1,46 +1,47 @@
-#include<bits/stdc++.h>
-#define mo 1000000007
-#define ll long long int
-#define pb push_back
-#define pob pop_back
-#define ff first
-#define ss second
+#include <bits/stdc++.h>
 using namespace std;
-bool check(string s) 
+bool checkRedundancy(string& str)
 {
-    if(s.size()==0)
-    return true;
-    stack<char>st;
-    for(int i=0;i<s.size();i++)
-    {
-        if(st.size()==0)
-        {
-            st.push(s[i]);
-        }
-        else
-        {
-            if(st.top()=='(' && s[i]==')')
+    stack<char> st;
+ 
+    for (auto& ch : str) {
+ 
+        if (ch == ')') {
+            char top = st.top();
             st.pop();
-            else
-            st.push(s[i]);
+            bool flag = true;
+ 
+            while (!st.empty() and top != '(') {
+                if (top == '+' || top == '-' ||
+                    top == '*' || top == '/')
+                    flag = false;
+
+                top = st.top();
+                st.pop();
+            }
+ 
+            if (flag == true)
+                return true;
         }
+ 
+        else
+            st.push(ch); 
     }
-    if(st.size()==0)
-    return true;
-    else
     return false;
 }
-void solve()
+
+void findRedundant(string& str)
 {
-    string s;
-    cin>>s;
-    if(check(s))
-    cout<<"The parentheses are balanced"<<"\n";
+    bool ans = checkRedundancy(str);
+    if (ans == true)
+        cout << "Yes\n";
     else
-    cout<<"The parentheses are not balanced"<<"\n";
+        cout << "No\n";
 }
+ 
 int main()
 {
-    solve();
+    string str = "((a+b))";
+    findRedundant(str);
     return 0;
 }

@@ -1,17 +1,21 @@
 #include <iostream>
 using namespace std;
 
-int fac(int n)
-{
-    if (n==0)
-        return 1;
-    else
-        return fac(n-1)*n;
-}
+int main() {
+    int n;
+    long factorial = 1.0;
 
-int main()
-{
-    cout << fac(5)<<endl;
+    cout << "Enter a positive integer: ";
+    cin >> n;
+
+    if (n < 0)
+        cout << "Error! Factorial of a negative number doesn't exist.";
+    else {
+        for(int i = 1; i <= n; ++i) {
+            factorial *= i;
+        }
+        cout << "Factorial of " << n << " = " << factorial;    
+    }
+
     return 0;
 }
-
