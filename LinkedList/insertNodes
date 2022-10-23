@@ -1,0 +1,81 @@
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+
+    Node(int data){
+        this -> data = data;
+        this -> next = NULL;
+    }
+};
+
+
+// insertion at head
+void insertAtHead(Node* &head, int d){
+    Node* new_node = new Node(d);
+    new_node->next = head;
+head = new_node;
+}
+
+// insertion at tail
+void insertAtTail(Node* &tail,int d){
+
+    Node* new_node = new Node(d);
+    
+    tail->next = new_node;
+    tail=tail->next;
+}
+
+// insertion at any position
+void insertAtPos(Node* &head, int pos, int d){
+    if(pos==1){
+        insertAtHead(head,d);
+        return;
+    }
+    
+    Node* temp=head;
+    if(temp->next==NULL){
+        insertAtTail(head,d);
+    }
+    int cnt=1;
+    while(cnt<pos-1){
+        temp=temp->next;
+        cnt++;
+    }
+
+    Node* new_node = new Node(13);
+    new_node->next = temp->next;
+    temp->next = new_node;
+}
+
+
+// print LL
+void print(Node* &head){
+Node* temp = head;
+while(temp!=NULL){
+    cout<<temp->data<<" ";
+    temp=temp->next;
+}
+cout<<endl;
+}
+
+
+int main(){
+
+Node* node1 = new Node(10);
+ Node* head = node1;
+  Node* tail = node1;
+ print(head);
+ insertAtHead(head,12);
+  print(head);
+   insertAtHead(head,15);
+  print(head);
+  insertAtTail(tail,22);
+    print(head);
+      insertAtPos(head,5,13);
+    print(head);
+   
+
+}
