@@ -1,20 +1,24 @@
-#include <stdio.h>
-void toh(int n, char src, char dest, char help)
+#include <bits/stdc++.h>
+using namespace std;
+ 
+void towerOfHanoi(int n, char from_rod, char to_rod,
+                  char aux_rod)
 {
-    if (n == 1)
-    {
-        printf("\n Move disk 1 from %c to %c", src, dest);
+    if (n == 0) {
         return;
     }
-    toh(n - 1, src, help, dest);
-    printf("move %d from %c to %c \n", n, src, dest);
-    toh(n - 1, help, dest, src);
+    towerOfHanoi(n - 1, from_rod, aux_rod, to_rod);
+    cout << "Move disk " << n << " from rod " << from_rod
+         << " to rod " << to_rod << endl;
+    towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
 }
+ 
+// Driver code
 int main()
 {
-    int n;
-    printf("Enter the value of n.\n");
-    scanf("%d", &n);
-    toh(n, 'a', 'c', 'b');
+    int N = 3;
+ 
+    // A, B and C are names of rods
+    towerOfHanoi(N, 'A', 'C', 'B');
     return 0;
 }
